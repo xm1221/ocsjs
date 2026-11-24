@@ -44,7 +44,7 @@ const infos = GM_info;
 		renderConfig: {
 			renderScript: RenderScript,
 			styles: [STYLE],
-			defaultPanelName: CommonProject.scripts.guide.namespace,
+			defaultPanelName: CommonProject.scripts.oneClickBrush.namespace,
 			title: `${logoSvg} OCS 全域名通用版 <span style="font-size: 12px; color: #969696;">v${infos.script.version}</span>`
 		},
 		updatePage:

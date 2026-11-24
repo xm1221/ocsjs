@@ -30,6 +30,7 @@ import {
 	createAnswererModeDropdown,
 	loadingSpinSvg
 } from '../utils/ui';
+import { createOneClickBrushPanel } from '../utils/one-click-brush';
 
 const TAB_WORK_RESULTS_KEY = 'common.work-results.results';
 
@@ -201,6 +202,23 @@ export const CommonProject = Project.create({
 	name: '通用',
 	domains: [],
 	scripts: {
+		oneClickBrush: new Script({
+			name: '🚀 一键刷课',
+			matches: [['所有页面', /.*/]],
+			namespace: 'common.one-click-brush',
+			priority: 1,
+			configs: {
+				notes: {
+					defaultValue: $ui.notes([
+						'按向导选择平台、配置题库、登录并进入课程章节，脚本会自动刷课或答题。',
+						'账号密码需自行在平台登录页填写，脚本不会保存你的密码。'
+					]).outerHTML
+				}
+			},
+			onrender({ panel }) {
+				panel.body.replaceChildren(createOneClickBrushPanel());
+			}
+		}),
 		guide: new Script({
 			name: '🏠 使用教程',
 			matches: [['所有页面', /.*/]],
@@ -1719,6 +1737,11 @@ const createGuide = () => {
 		});
 	};
 
+	const oneClick = h('button', { className: 'base-style-button' }, '🚀 一键刷课');
+	oneClick.onclick = () => {
+		BackgroundProject.scripts.render.methods.pin(CommonProject.scripts.oneClickBrush);
+	};
+
 	const gotoHome = h('button', { className: 'base-style-button-secondary' }, '🏡官网教程');
 	gotoHome.onclick = () => window.open('https://docs.ocsjs.com', '_blank');
 
@@ -1753,6 +1776,7 @@ const createGuide = () => {
 		]),
 		h('div', { style: { margin: '12px 0px' } }, [
 			h('div', { style: { marginBottom: '8px', fontWeight: 'bold' } }, '🌐快捷访问：'),
+			oneClick,
 			gotoHome,
 			contactUs,
 			changeLog,

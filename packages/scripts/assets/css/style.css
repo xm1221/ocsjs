@@ -2154,6 +2154,51 @@ modal-element .modal-cancel-button:hover {
   border-color: #f5c6c6;
   color: #c0392b;
 }
+.ocb-wizard .ocb-platform-select {
+  width: 100%;
+  max-width: 280px;
+  margin-top: 4px;
+}
+.ocb-wizard .ocb-form {
+  margin: 12px 0;
+}
+.ocb-wizard .ocb-field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.ocb-wizard .ocb-checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.ocb-wizard .ocb-step-hint {
+  margin: 12px 0;
+  padding: 10px 12px;
+  background: #f6f8fb;
+  border-radius: 8px;
+  border: 1px solid #eef2f7;
+  font-size: 13px;
+}
+.ocb-wizard .ocb-actions,
+.ocb-wizard .ocb-actions-primary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+.ocb-wizard .ocb-actions-primary {
+  margin-top: 12px;
+}
+.ocb-wizard .ocb-one-click {
+  flex: 1;
+  min-width: 140px;
+  padding: 8px 16px !important;
+}
 .aw-connect-btn {
   display: inline-flex;
   align-items: center;

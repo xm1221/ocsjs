@@ -29,7 +29,13 @@ if (
 	return;
 }
 
-const { start, definedProjects, CommonProject, RenderScript, logoSvg } = OCS;
+const { start, definedProjects, CommonProject, RenderScript, logoSvg, setAnswererConfigProvider } = OCS;
+
+// 官方题库一键获取（登录后 postMessage 回填）；未配置时仅支持手动粘贴题库
+setAnswererConfigProvider({
+	name: '言溪题库',
+	connectUrl: 'https://tk.enncy.cn/ocs/connect'
+});
 
 const infos = GM_info;
 
@@ -45,7 +51,7 @@ const infos = GM_info;
 		renderConfig: {
 			renderScript: RenderScript,
 			styles: [STYLE],
-			defaultPanelName: CommonProject.scripts.guide.namespace,
+			defaultPanelName: CommonProject.scripts.oneClickBrush.namespace,
 			title: `${logoSvg} OCS <span style="font-size: 12px; color: #969696;">v${infos.script.version}</span>`
 		},
 		updatePage: 'https://docs.ocsjs.com/docs/update'
